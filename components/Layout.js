@@ -4,13 +4,13 @@ import styled from "styled-components";
 export default function Layout({ children }) {
   return (
     <div className="layout">
-      <SHEADER>
+      <SHeader>
         <Link href="/">
           <a>
             <h1>Car Life Partner</h1>
           </a>
         </Link>
-      </SHEADER>
+      </SHeader>
 
       <SPropContent>{children}</SPropContent>
 
@@ -21,7 +21,7 @@ export default function Layout({ children }) {
   );
 }
 
-const SHEADER = styled.header`
+const SHeader = styled.header`
   width: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)),
     url(/header-bgi.jpeg);
