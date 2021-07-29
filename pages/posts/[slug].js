@@ -47,6 +47,8 @@ export default function PostDetails({ post }) {
     time,
     title,
     youTube,
+    tel,
+    addressText,
   } = post.fields;
 
   const getYouTubeId = (url) => {
@@ -110,8 +112,8 @@ export default function PostDetails({ post }) {
       <SAccess>
         <div className="text">
           <h3>アクセス</h3>
-          <p>〒100-0014 東京都千代田区永田町１丁目７−１</p>
-          <p>TEL: 03-3581-3100</p>
+          <p>{addressText}</p>
+          <p>TEL : {tel}</p>
         </div>
         <div className="map">
           <LoadScript
