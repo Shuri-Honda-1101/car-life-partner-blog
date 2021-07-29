@@ -4,13 +4,11 @@ import { GoogleMap, LoadScript } from "@react-google-maps/api";
 import ReactMarkdown from "react-markdown";
 import styled from "styled-components";
 
-//contentfulの初期化
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_KEY,
 });
 
-//slugをpathとして取得
 export const getStaticPaths = async () => {
   const res = await client.getEntries({
     content_type: "carLifePartnerBlogPosts",
@@ -27,7 +25,6 @@ export const getStaticPaths = async () => {
   };
 };
 
-//pathと合致する投稿を取得
 export const getStaticProps = async ({ params }) => {
   const { items } = await client.getEntries({
     content_type: "carLifePartnerBlogPosts",
@@ -39,8 +36,8 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-//コンポーネント
 export default function PostDetails({ post }) {
+  console.log(post);
   const {
     address,
     featuredImage,
@@ -54,7 +51,6 @@ export default function PostDetails({ post }) {
     addressText,
   } = post.fields;
 
-  //YouTubeのURLをID部分だけ残す
   const getYouTubeId = (url) => {
     const regExp =
       /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -67,13 +63,11 @@ export default function PostDetails({ post }) {
     }
   };
 
-  //GoogleMapのサイズ
   const containerStyle = {
     width: "calc(400 / 1440 * 100vw)",
     height: "calc(400 / 1440 * 100vw)",
   };
 
-  //addressをGoogleMapの座標に変換
   const center = {
     lat: address.lat,
     lng: address.lon,
