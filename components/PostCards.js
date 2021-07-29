@@ -8,15 +8,15 @@ export const PostCard = ({ post }) => {
   return (
     <>
       <SPostCard>
-        <div>
+        <SImageWrap>
           <Image
             src={"https:" + thumbnail.fields.file.url}
-            width={400}
-            height={400}
-            // width={thumbnail.fields.file.details.image.width}
-            // height={thumbnail.fields.file.details.image.height}
+            // width={400}
+            // height={400}
+            width={thumbnail.fields.file.details.image.width}
+            height={thumbnail.fields.file.details.image.height}
           />
-        </div>
+        </SImageWrap>
         <STextWrap>
           <div>
             <h4>{title}</h4>
@@ -41,8 +41,15 @@ const SPostCard = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: calc(50 / 1440 * 100vw);
-  height: 400px;
+  margin-bottom: calc(100 / 1440 * 100vw);
+  height: calc(400 / 1440 * 100vw);
+`;
+
+const SImageWrap = styled.div`
+  img {
+    height: calc(400 / 1440 * 100vw);
+    object-fit: cover;
+  }
 `;
 
 const STextWrap = styled.div`
@@ -55,12 +62,12 @@ const STextWrap = styled.div`
   border-top: 1px solid white;
   border-bottom: 1px solid white;
   h4 {
-    font-size: 40px;
+    font-size: min(calc(40 / 1440 * 100vw), 40px);
     margin-bottom: calc(30 / 1440 * 100vw);
   }
   p {
-    font-size: 30px;
-    margin-bottom: calc(20 / 1440 * 100vw);
+    font-size: min(calc(26 / 1440 * 100vw), 26px);
+    margin-bottom: calc(15 / 1440 * 100vw);
   }
 `;
 
@@ -68,13 +75,13 @@ const SLinkWrap = styled.div`
   display: flex;
   justify-content: flex-end;
   a {
-    font-size: 22px;
+    font-size: min(calc(22 / 1440 * 100vw), 22px);
   }
 `;
 
 const SSummary = styled.div`
   p {
-    font-size: 22px;
-    line-height: 35px;
+    font-size: min(calc(20 / 1440 * 100vw), 20px);
+    line-height: min(calc(33 / 1440 * 100vw), 33px);
   }
 `;
