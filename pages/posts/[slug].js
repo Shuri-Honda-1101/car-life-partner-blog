@@ -101,9 +101,9 @@ export default function PostDetails({ post }) {
           height="315"
           src={"https://www.youtube.com/embed/" + getYouTubeId(youTube)}
           title="YouTube video player"
-          frameborder="0"
+          frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
+          allowFullScreen
         ></iframe>
       </SMedia>
       <SMain>
@@ -115,7 +115,7 @@ export default function PostDetails({ post }) {
           <p>{addressText}</p>
           <p>TEL : {tel}</p>
         </div>
-        <div className="map">
+        <div>
           <LoadScript
             googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
           >
