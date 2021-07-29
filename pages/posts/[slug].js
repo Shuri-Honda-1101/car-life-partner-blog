@@ -64,8 +64,8 @@ export default function PostDetails({ post }) {
   };
 
   const containerStyle = {
-    width: "400px",
-    height: "400px",
+    width: "calc(400 / 1440 * 100vw)",
+    height: "calc(400 / 1440 * 100vw)",
   };
 
   const center = {
@@ -109,24 +109,26 @@ export default function PostDetails({ post }) {
       <SMain>
         <ReactMarkdown>{mainText}</ReactMarkdown>
       </SMain>
-      <SAccess>
-        <div className="text">
-          <h3>アクセス</h3>
-          <p>{addressText}</p>
-          <p>TEL : {tel}</p>
-        </div>
-        <div>
-          <LoadScript
-            googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
-          >
-            <GoogleMap
-              mapContainerStyle={containerStyle}
-              center={center}
-              zoom={17}
-            ></GoogleMap>
-          </LoadScript>
-        </div>
-      </SAccess>
+      <SAccessWrap>
+        <h3>アクセス</h3>
+        <SAccess>
+          <div className="text">
+            <p>{addressText}</p>
+            <p>TEL : {tel}</p>
+          </div>
+          <div className="google-map">
+            <LoadScript
+              googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+            >
+              <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={17}
+              ></GoogleMap>
+            </LoadScript>
+          </div>
+        </SAccess>
+      </SAccessWrap>
     </SItemWrap>
   );
 }
@@ -135,6 +137,7 @@ const SItemWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #242323;
 `;
 
 const SBanner = styled.div`
@@ -143,14 +146,14 @@ const SBanner = styled.div`
   align-items: center;
   position: relative;
   h2 {
-    font-size: 40px;
+    font-size: min(calc(40 / 1440 * 100vw), 40px);
     position: absolute;
     top: 40%;
   }
 `;
 
 const SImage = styled.div`
-  height: 300px;
+  height: calc(300 / 1440 * 100vw);
   img {
     object-fit: cover;
     object-position: 50% 50%;
@@ -162,78 +165,104 @@ const SInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px 0;
+  margin: calc(50 / 1440 * 100vw) 0;
   ul {
     display: flex;
-    font-size: 20px;
-    margin-bottom: 30px;
+    margin-bottom: calc(30 / 1440 * 100vw);
     li {
+      font-size: min(calc(20 / 1440 * 100vw), 20px);
       border: 1px solid white;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 20px;
-      margin-right: 30px;
+      padding: calc(10 / 1440 * 100vw);
+      border-radius: calc(10 / 1440 * 100vw);
+      margin-right: calc(30 / 1440 * 100vw);
     }
   }
   p {
-    font-size: 25px;
-    margin-bottom: 20px;
+    font-size: min(calc(25 / 1440 * 100vw), 25px);
+    margin-bottom: calc(20 / 1440 * 100vw);
   }
 `;
 
 const SMedia = styled.div`
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px;
+  margin: calc(20 / 1440 * 100vw);
+  iframe {
+    width: 70%;
+    object-fit: cover;
+  }
+`;
+
+const SAccessWrap = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h3 {
+    font-size: min(calc(40 / 1440 * 100vw), 40px);
+    margin: calc(20 / 1440 * 100vw);
+  }
 `;
 
 const SAccess = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
-  font-size: 20px;
-  justify-content: space-between;
-  margin: 50px;
+  font-size: min(calc(20 / 1440 * 100vw), 18px);
+  justify-content: center;
+  margin: calc(50 / 1440 * 100vw);
   .text {
-    width: 60%;
+    margin-right: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    h3 {
-      font-size: 40px;
-      margin: 20px;
-    }
     p {
-      margin: 10px;
+      margin: calc(10 / 1440 * 100vw);
     }
   }
 `;
 
 const SMain = styled.div`
+  margin: calc(50 / 1440 * 100vw);
+  width: 80%;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
+  padding: calc(30 / 1440 * 100vw) 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 80%;
   h1 {
-    font-size: 60px;
-    margin: 30px;
+    font-size: min(calc(60 / 1440 * 100vw), 60px);
+    margin: calc(35 / 1440 * 100vw);
   }
   h2 {
-    font-size: 50px;
-    margin: 25px;
+    font-size: min(calc(50 / 1440 * 100vw), 50px);
+    margin: calc(30 / 1440 * 100vw);
   }
   h3 {
-    font-size: 40px;
-    margin: 20px;
+    font-size: min(calc(40 / 1440 * 100vw), 40px);
+    margin: calc(25 / 1440 * 100vw);
   }
   h4 {
-    font-size: 30px;
-    margin: 15px;
+    font-size: min(calc(30 / 1440 * 100vw), 30px);
+    margin: calc(20 / 1440 * 100vw);
   }
   p {
-    font-size: 20px;
-    line-height: 30px;
-    margin: 10px;
+    width: 100%;
+    font-size: min(calc(17 / 1440 * 100vw), 17px);
+    line-height: min(calc(25 / 1440 * 100vw), 25px);
+    margin: calc(11 / 1440 * 100vw);
+  }
+
+  li {
+    list-style: inside;
+    font-size: min(calc(18 / 1440 * 100vw), 18px);
+    line-height: min(calc(25 / 1440 * 100vw), 25px);
+    margin: calc(12 / 1440 * 100vw);
+  }
+  img {
+    width: 100%;
+    object-fit: cover;
   }
 `;

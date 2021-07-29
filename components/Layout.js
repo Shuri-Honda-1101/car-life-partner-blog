@@ -33,7 +33,7 @@ const SHEADER = styled.header`
   align-items: center;
   h1 {
     font-family: Verdana;
-    font-size: calc(70 / 1440 * 100vw);
+    font-size: min(calc(70 / 1440 * 100vw), 70px);
     text-shadow: 0 calc(3 / 1440 * 100vw) calc(6 / 1440 * 100vw)
       rgba(0, 0, 0, 0.16);
     margin-left: calc(50 / 1440 * 100vw);
@@ -43,12 +43,12 @@ const SHEADER = styled.header`
 `;
 
 const SPropContent = styled.section`
-  margin: 100px;
+  margin: calc(100 / 1440 * 100vw);
 `;
 
 const SFooter = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100 / 1440 * 100vw);
+  height: calc(50 / 1440 * 100vw);
 `;
